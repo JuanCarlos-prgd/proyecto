@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vikings Bar Restaurant </title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <img src="image/logo.png" alt="Logo Vikings" class="logo" />
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <section id="inicio" class="hero">
+        <h1>Bienvenido a Vikings</h1>
+        <p>¡Del Valhalla a tus manos!</p>
+
+
+        <div id="inicio" class="hero-text">
+            <h2>Acerca de nosotros</h2>
+            <p>En el corazón de la ciudad, donde el bullicio moderno se mezcla con ecos del pasado, nació Vikings Bar
+                Restaurant, un santuario para los amantes de la aventura, la buena comida y la mitología nórdica.</p>
+
+            <p>Con el tiempo, Vikings Bar Restaurant se convirtió en un punto de encuentro para fanáticos de la
+                historia, cosplayers, turistas y familias. Se añadieron noches temáticas, música folk en vivo, y hasta
+                desafíos de comida “digna de un berserker”.</p>
+
+            <p>Descubre una experiencia gastronómica única donde la tradición vikinga cobra vida. En Vikings,
+                cada rincón está inspirado en la era de los grandes guerreros del norte: madera tallada, escudos en las
+                paredes, antorchas suaves y aromas que despiertan el instinto aventurero.</p>
+
+            <p>Nuestro menú fusiona ingredientes ancestrales con técnicas modernas, ofreciendo platos como costillas de
+                dragón al fuego lento, salmón del fiordo con hierbas nórdicas, y postres como el pastel de runas o el
+                helado
+                de hidromiel. Todo servido por un equipo que te recibe como un verdadero huésped de Valhalla.</p>
+
+            <p>Ya sea para una cena épica, una celebración o una velada íntima, Vikings te invita a reservar tu mesa y
+                vivir una travesía culinaria que conquista paladares y despierta leyendas.</p>
+
+        </div>
+    </section>
+
+    <section id="carrusel-texto" class="texto-carousel">
+        <div class="texto-slider">
+            <div class="texto-slide active">⚔️ “Una cena digna de los dioses de Asgard.”</div>
+            <div class="texto-slide">🔥 “Las costillas de dragón son una leyenda viva.”</div>
+            <div class="texto-slide">🛡️ “Ambiente rústico, comida épica, servicio heroico.”</div>
+            <div class="texto-slide">🍻 “El hidromiel y el helado... ¡una combinación celestial!”</div>
+        </div>
+    </section>
+
+
+    <section id="menu" class="menu-section">
+        <h2>Menú</h2>
+
+        <div class="tab-buttons">
+            <button onclick="showTab('entradas')">Entradas</button>
+            <button onclick="showTab('platos')">Platos Fuertes</button>
+            <button onclick="showTab('postres')">Postres</button>
+            <button onclick="showTab('Bebidas')">Bebidas</button>
+        </div>
+
+        <div id="entradas" class="tab-content active">
+            <div class="dish" onclick="addToOrder('Pan de ajo vikingo', 3)">
+                <img src="image/pan de ajo.jpg" alt="Pan de ajo" />
+                <div class="info">
+                    <p class="name">Pan de ajo</p>
+                    <p class="price">$3</p>
+                </div>
+            </div>
+            <div class="dish" onclick="addToOrder('Ensalada Caprese', 7)">
+                <img src="image/ensalada caprese.jpg" alt="Ensalada" />
+                <div class="info">
+                    <p class="name">Ensalada Caprese</p>
+                    <p class="price">$7</p>
+                </div>
+            </div>
+            <div class="dish" onclick="addToOrder('Ensalada Cesar', 6)">
+                <img src="image/ensalada cesar.jpg" alt="Ensalada" />
+                <div class="info">
+                    <p class="name">Ensalada Cesar</p>
+                    <p class="price">$6</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="platos" class="tab-content">
+            <div class="dish" onclick="addToOrder('Costillas de dragón', 15)">
+                <img src="image/costillas.jpg" alt="Costillas" />
+                <div class="info">
+                    <p class="name">Costillas de dragón</p>
+                    <p class="price">$15</p>
+                </div>
+            </div>
+            <div class="dish" onclick="addToOrder('Salmón del norte', 20)">
+                <img src="image/salmon.jpg" alt="Salmón" />
+                <div class="info">
+                    <p class="name">Salmón del norte</p>
+                    <p class="price">$20</p>
+                </div>
+            </div>
+            <div class="dish" onclick="addToOrder('Vikings Burger', 10)">
+                <img src="image/beef.jpg" alt="Costillas" />
+                <div class="info">
+                    <p class="name">Vikings Burger</p>
+                    <p class="price"> $10</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="postres" class="tab-content">
+            <div class="dish" onclick="addToOrder('Pastel de runas', 6)">
+                <img src="image/postre-1.avif" alt="Pastel" />
+                <div class="info">
+                    <p class="name">Pastel de runas</p>
+                    <p class="price">$6</p>
+                </div>
+            </div>
+            <div class="dish" onclick="addToOrder('Helado de hidromiel', 4)">
+                <img src="image/postre-2.webp" alt="Helado" />
+                <div class="info">
+                    <p class="name">Helado de hidromiel</p>
+                    <p class="price">$4</p>
+                </div>
+            </div>
+            <div class="dish" onclick="addToOrder('tiramisú', 8)">
+                <img src="image/tiramisu.jpg" alt="Helado" />
+                <div class="info">
+                    <p class="name"> tiramisú</p>
+                    <p class="price">$8</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="Bebidas" class="tab-content">
+            <div class="dish" onclick="addToOrder('Polar', 55)">
+                <img src="image/cerveza1.jpg" alt="Pastel" />
+                <div class="info">
+                    <p class="name">Hidromiel</p>
+                    <p class="price">$1.5</p>
+                </div>
+            </div>
+            <div class="dish" onclick="addToOrder('Finca Las Moras Cabernet Sauvignon', 50)">
+                <img src="image/vino.jpg" alt="Helado" />
+                <div class="info">
+                    <p class="name">Finca Las Moras Cabernet Sauvignon</p>
+                    <p class="price">$12</p>
+                </div>
+            </div>
+            <div class="dish" onclick="addToOrder('Coca-cola', 50)">
+                <img src="image/cocacola.jpeg" alt="Helado" />
+                <div class="info">
+                    <p class="name">Coca-cola</p>
+                    <p class="price">$2</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="order-summary" class="order-summary">
+            <h3>🛒 Pedido</h3>
+            <ul id="order-list"></ul>
+            <p id="total">Total: $. 0</p>
+            <button onclick="confirmOrder()">Confirmar Pedido</button>
+        </div>
+    </section>
+
+
+    <section id="reserva" class="reserva-section" <h2 class="reserva">Reserva tu mesa</h2>
+        <form id="reservaForm" onsubmit="enviarReserva(event)">
+            <input type="text" placeholder="Nombre completo" required />
+            <input type="email" placeholder="Correo electrónico" required />
+            <input type="tel" placeholder="Teléfono" required />
+            <input type="date" required />
+            <input type="time" required />
+            <input type="number" placeholder="Número de personas" min="1" required />
+            <button type="submit">Reservar</button>
+        </form>
+        <p id="reservaMensaje"></p>
+    </section>
+
+    <a href="#reserva" class="boton-flotante">🛎️ Reservar</a>
+
+
+    <section id="ubicacion">
+        <h2>Encuéntranos</h2>
+        <div class="mapa-responsive">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125549.08663173967!2d-66.89036584999998!3d10.46839175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a58adcd824807%3A0x93dd2eae0a998483!2sCaracas%2C%20Distrito%20Capital!5e0!3m2!1ses!2sve!4v1760165239027!5m2!1ses!2sve"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>"
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <p>📍 Calle Valhalla, Caracas</p>
+        <p>📞 +58 123-4567890</p>
+        <p>📧 contacto@vikingsrestaurante.com</p>
+        <p>&copy; 2025 Vikings Restaurante</p>
+        <p>Elaborado por | <a href="https://github.com/JuanCarlos-prgd" target="_blank"
+                style="text-decoration: none; color: white;">JuanCarlos-prgd</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
