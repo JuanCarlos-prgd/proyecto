@@ -24,16 +24,16 @@ function toggleMenu() {
   nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
 }
 
-
-function showTab(tabId) {
-  const tabs = document.querySelectorAll('.tab-content');
-  tabs.forEach(tab => tab.classList.remove('active'));
-  document.getElementById(tabId).classList.add('active');
-}
-
 let order = [];
+
 function addToOrder(name, price) {
-  order.push({ name, price });
+  const existingItem = order.find(item => item.name === name);
+  if (existingItem) {
+    existingItem.quantity += 1;
+    existingItem.total = existingItem.quantity * price;
+  } else {
+    order.push({ name, price, quantity: 1, total: price });
+  }
   updateOrder();
 }
 
@@ -43,14 +43,36 @@ function updateOrder() {
   list.innerHTML = '';
   let total = 0;
 
-  order.forEach(item => {
+  order.forEach((item, index) => {
     const li = document.createElement('li');
-    li.textContent = `${item.name} - $. ${item.price}`;
+    li.innerHTML = `
+      <span>${item.quantity} x ${item.name} - $. ${item.total}</span>
+      <div class="controls">
+        <button onclick="changeQuantity(${index}, 1)">+</button>
+        <button onclick="changeQuantity(${index}, -1)">−</button>
+        <button onclick="removeItem(${index})">🗑️</button>
+      </div>
+    `;
     list.appendChild(li);
-    total += item.price;
+    total += item.total;
   });
 
   totalDisplay.textContent = `Total: $. ${total}`;
+}
+
+function changeQuantity(index, delta) {
+  order[index].quantity += delta;
+  if (order[index].quantity <= 0) {
+    order.splice(index, 1);
+  } else {
+    order[index].total = order[index].quantity * order[index].price;
+  }
+  updateOrder();
+}
+
+function removeItem(index) {
+  order.splice(index, 1);
+  updateOrder();
 }
 
 function confirmOrder() {
@@ -59,8 +81,10 @@ function confirmOrder() {
     return;
   }
 
-  let summary = order.map(item => `${item.name} - $. ${item.price}`).join('\n');
-  alert(`Pedido confirmado:\n\n${summary}\n\nTotal: $. ${order.reduce((sum, item) => sum + item.price, 0)}`);
+  let summary = order.map(item => `${item.quantity} x ${item.name} - $. ${item.total}`).join('\n');
+  let total = order.reduce((sum, item) => sum + item.total, 0);
+
+  alert(`Pedido confirmado:\n\n${summary}\n\nTotal: $. ${total}`);
   order = [];
   updateOrder();
 }
